@@ -13,10 +13,12 @@ const config: MenuEntry[] = [
       {
         label: "Exchange",
         href: "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x2F16b8901957C1c3694958D27ba5f872080C3325",
+        external: true
       },
       {
         label: "Liquidity",
         href: "https://exchange.pancakeswap.finance/#/pool",
+        external: true
       },
     ],
   },
@@ -31,20 +33,10 @@ const config: MenuEntry[] = [
     href: '/caves',
   },
   {
-    label: 'Pools',
+    label: 'Blizzard',
     icon: 'PoolIcon',
     href: '/pools',
   },
-  // {
-  //   label: 'Lottery',
-  //   icon: 'TicketIcon',
-  //   href: '/lottery',
-  // },
-  // {
-  //   label: 'NFT',
-  //   icon: 'NftIcon',
-  //   href: '/nft',
-  // },
   {
     label: 'Info',
     icon: 'InfoIcon',
@@ -52,6 +44,7 @@ const config: MenuEntry[] = [
       {
         label: 'PancakeSwap',
         href: 'https://pancakeswap.info/token/0x2F16b8901957C1c3694958D27ba5f872080C3325',
+        external: true
       },
     ],
   },
@@ -62,14 +55,17 @@ const config: MenuEntry[] = [
       {
         label: "Github",
         href: "https://github.com/blzd-dev",
+        external: true
       },
       {
         label: "Docs",
-        href: "https://docs.blizzard.money",
+        href: "https://blizzardmoney.medium.com",
+        external: true
       },
       {
         label: "Blog",
-        href: "https://medium.com/blizzardmoney",
+        href: "https://blizzardmoney.medium.com",
+        external: true
       },
     ],
   },

@@ -12,7 +12,7 @@ import TotalValueLockedCard from './components/TotalValueLockedCard'
 const Hero = styled.div`
   align-items: center;
   background-image: url('/images/blzd/3.png');
-  background-size: 150px;
+  background-size: 110px;
   background-repeat: no-repeat;
   background-position: top center;
   display: flex;
@@ -25,6 +25,7 @@ const Hero = styled.div`
 
   ${({ theme }) => theme.mediaQueries.lg} {
     background-image: url('/images/blzd/3.png'), url('/images/blzd/3b.png');
+    background-size: 150px;
     background-position: left center, right center;
     height: 165px;
     padding-top: 0;
