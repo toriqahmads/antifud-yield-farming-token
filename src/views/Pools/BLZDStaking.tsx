@@ -67,36 +67,39 @@ const Farm: React.FC = () => {
 
   return (
     <Page>
-      <Hero style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <Heading as="h1" size="xxl" mb="16px">
-            {TranslateString(282, 'BLZD Pool')}
-          </Heading>
-          <ul>
-            <li>{TranslateString(580, 'Stake BLZD to earn new tokens.')}</li>
+      <Hero>
+        <Heading as="h1" size="xxl" mb="16px">
+          {TranslateString(282, 'Blizzard Coming Soon...')}
+        </Heading>
+        {/* <ul>
+            <li>{TranslateString(580, 'Stake BLZD to earn tokens.')}</li>
             <li>{TranslateString(404, 'You can unstake at any time.')}</li>
             <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
-          </ul>
-        </div>
+          </ul> */}
         <img src="/images/blzdstakepage.png" alt="BLZD Pool icon" width={410} height={191} />
       </Hero>
-      <PoolTabButtons />
-      <Divider />
-      <FlexLayout>
-        <Route exact path={`${path}`}>
-          <>
-            {orderBy(openPools, ['sortOrder']).map((pool) => (
-              <PoolCard key={pool.sousId} pool={pool} />
-            ))}
-            <Coming />
-          </>
-        </Route>
-        <Route path={`${path}/history`}>
-          {orderBy(finishedPools, ['sortOrder']).map((pool) => (
-            <PoolCard key={pool.sousId} pool={pool} />
-          ))}
-        </Route>
-      </FlexLayout>
+      {false && (
+        <>
+          {' '}
+          <PoolTabButtons />
+          <Divider />
+          <FlexLayout>
+            <Route exact path={`${path}`}>
+              <>
+                {orderBy(openPools, ['sortOrder']).map((pool) => (
+                  <PoolCard key={pool.sousId} pool={pool} />
+                ))}
+                <Coming />
+              </>
+            </Route>
+            <Route path={`${path}/history`}>
+              {orderBy(finishedPools, ['sortOrder']).map((pool) => (
+                <PoolCard key={pool.sousId} pool={pool} />
+              ))}
+            </Route>
+          </FlexLayout>{' '}
+        </>
+      )}
     </Page>
   )
 }
