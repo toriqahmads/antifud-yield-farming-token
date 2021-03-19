@@ -95,7 +95,6 @@ export const useTotalValue = (): BigNumber => {
       } else {
         val = farm.lpTotalInQuoteToken
       }
-      console.log(farm.lpSymbol, val)
       value = value.plus(val)
     }
   }
