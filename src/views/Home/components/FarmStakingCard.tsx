@@ -21,8 +21,14 @@ const Block = styled.div`
   margin-bottom: 16px;
 `
 
-const CardImage = styled.img`
+const TokenImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
   margin-bottom: 16px;
+`
+
+const CardImage = styled.img`
+  margin-right: 8px;
 `
 
 const Label = styled.div`
@@ -54,13 +60,47 @@ const FarmedStakingCard = () => {
     }
   }, [onReward])
 
+  const addWatchBlzdToken = useCallback(async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const provider = window.ethereum
+    if (provider) {
+      try {
+        // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+        const wasAdded = await provider.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0xb183b6E504FB7e27C0a19AD43B0B5f2Ac3d67bf5',
+              symbol: 'BLZD',
+              decimals: '18',
+              image: 'https://blzd-frontend.vercel.app/images/farms/blzd.png',
+            },
+          },
+        })
+
+        if (wasAdded) {
+          console.log('Token was added')
+        }
+      } catch (error) {
+        // TODO: find a way to handle when the user rejects transaction or it fails
+      }
+    }
+  }, [])
+
   return (
     <StyledFarmStakingCard>
       <CardBody>
         <Heading size="xl" mb="24px">
           {TranslateString(542, 'Farms & Staking')}
         </Heading>
-        <CardImage src="/images/blzd/2.png" alt="blzd logo" width={64} height={64} />
+        <TokenImageWrapper>
+          <CardImage src="/images/blzd/2.png" alt="blzd logo" width={64} height={64} />
+          <Button onClick={addWatchBlzdToken} scale="sm">
+            + <img style={{ marginLeft: 8 }} width={16} src="/images/wallet/metamask.png" alt="metamask logo" />
+          </Button>
+        </TokenImageWrapper>
         <Block>
           <BlzdHarvestBalance />
           <Label>{TranslateString(544, 'BLZD to Harvest')}</Label>
@@ -71,11 +111,7 @@ const FarmedStakingCard = () => {
         </Block>
         <Actions>
           {account ? (
-            <Button
-              id="harvest-all"
-              disabled={balancesWithValue.length <= 0 || pendingTx}
-              onClick={harvestAllFarms}
-            >
+            <Button id="harvest-all" disabled={balancesWithValue.length <= 0 || pendingTx} onClick={harvestAllFarms}>
               {pendingTx
                 ? TranslateString(548, 'Collecting BLZD')
                 : TranslateString(999, `Harvest all (${balancesWithValue.length})`)}

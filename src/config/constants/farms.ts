@@ -3,31 +3,31 @@ import { FarmConfig, QuoteToken } from './types'
 
 const farms: FarmConfig[] = [
   {
-    pid: 2,
+    pid: 1,
     lpSymbol: 'BLZD-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x7c5A7AEf5B3f4b38aCB9629fc5Ad3307e0B65F2B',
+      56: '0xeC53355F6bd15619D48e15464DFf981Cb1E30648',
     },
     tokenSymbol: 'BLZD',
     tokenAddresses: {
       97: '',
-      56: '0x2F16b8901957C1c3694958D27ba5f872080C3325',
+      56: '0xb183b6E504FB7e27C0a19AD43B0B5f2Ac3d67bf5',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
   },
   {
-    pid: 1,
+    pid: 2,
     lpSymbol: 'BLZD-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x0c95e5DE6216b8C44f1c3e33C2c206A78Ad8e8d2',
+      56: '0xdc8FFacA49580106602bba90264f304CC62357a4',
     },
     tokenSymbol: 'BLZD',
     tokenAddresses: {
       97: '',
-      56: '0x2F16b8901957C1c3694958D27ba5f872080C3325',
+      56: '0xb183b6E504FB7e27C0a19AD43B0B5f2Ac3d67bf5',
     },
     quoteTokenSymbol: QuoteToken.BNB,
     quoteTokenAdresses: contracts.wbnb,
@@ -119,7 +119,7 @@ const farms: FarmConfig[] = [
     tokenSymbol: 'BLZD',
     tokenAddresses: {
       97: '',
-      56: '0x2F16b8901957C1c3694958D27ba5f872080C3325',
+      56: '0xb183b6E504FB7e27C0a19AD43B0B5f2Ac3d67bf5',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
