@@ -12,7 +12,7 @@ const config: MenuEntry[] = [
     items: [
       {
         label: "Exchange",
-        href: "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xb183b6E504FB7e27C0a19AD43B0B5f2Ac3d67bf5",
+        href: "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x57067A6BD75c0E95a6A5f158455926e43E79BeB0",
         external: true
       },
       {
@@ -43,7 +43,7 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'PancakeSwap',
-        href: 'https://pancakeswap.info/token/0xb183b6E504FB7e27C0a19AD43B0B5f2Ac3d67bf5',
+        href: 'https://pancakeswap.info/token/0x57067A6BD75c0E95a6A5f158455926e43E79BeB0',
         external: true
       },
     ],
