@@ -114,7 +114,7 @@ const farms: FarmConfig[] = [
     lpSymbol: 'BLZD',
     lpAddresses: {
       97: '',
-      56: '0x7c5A7AEf5B3f4b38aCB9629fc5Ad3307e0B65F2B', // BLZD-BUSD LP
+      56: '0xE9C53B5Ab0C9cDBd72A03151a628863C28c55A6A', // BLZD-BUSD LP
     },
     tokenSymbol: 'BLZD',
     tokenAddresses: {
