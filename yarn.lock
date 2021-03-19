@@ -1212,10 +1212,10 @@
     "@web3-react/walletlink-connector" "^6.1.1"
     jsbi "^3.1.1"
 
-"@blzd-dev/uikit@^0.13.21":
-  version "0.13.21"
-  resolved "https://registry.yarnpkg.com/@blzd-dev/uikit/-/uikit-0.13.21.tgz#5ef22983dbae27c2cf8a7fd728b0aa874fc73927"
-  integrity sha512-xkSDKMBvl53fHSRezJVXBdpWZFPtDvMm4pvFxY9eJ/4+Nck7NGYnOQ17bcnwl+TsMORniEn2xx0lL4nbcqZj7A==
+"@blzd-dev/uikit@^0.13.22":
+  version "0.13.22"
+  resolved "https://registry.yarnpkg.com/@blzd-dev/uikit/-/uikit-0.13.22.tgz#139e52143e2e13902ca24598ef38ff0cb1116d6b"
+  integrity sha512-SQJJVs1PChvUFWist7ImWM+mblAe5MxI7BadPI+Aunggy5DCLVLnr29MbkeS0R77V0CLp2XqR22UX/6bJzBA9Q==
   dependencies:
     "@types/lodash" "^4.14.162"
     "@types/styled-system" "^5.1.10"
