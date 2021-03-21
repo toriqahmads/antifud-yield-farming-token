@@ -11,7 +11,7 @@ const Menu = (props) => {
   const { account, connect, reset } = useWallet()
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
-  const cakePriceUsd = usePriceBlzdBusd()
+  const blzdPriceUsd = usePriceBlzdBusd()
 
   return (
     <UikitMenu
@@ -23,9 +23,9 @@ const Menu = (props) => {
       currentLang={selectedLanguage && selectedLanguage.code}
       langs={allLanguages}
       setLang={setSelectedLanguage}
-      cakePriceUsd={cakePriceUsd.toNumber()}
+      cakePriceUsd={blzdPriceUsd.toNumber()}
       links={config}
-      priceLink="https://www.coingecko.com/en/coins/goose-finance"
+      priceLink="https://pancakeswap.info/token/0x57067A6BD75c0E95a6A5f158455926e43E79BeB0"
       {...props}
     />
   )
