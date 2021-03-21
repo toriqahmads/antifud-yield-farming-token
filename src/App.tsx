@@ -29,7 +29,7 @@ BigNumber.config({
 const App: React.FC = () => {
   const { account, connect } = useWallet()
   useEffect(() => {
-    if (!account && window.localStorage.getItem('accountStatus')) {
+    if (!account && window.localStorage.getItem('connectorId')) {
       connect('injected')
     }
   }, [account, connect])
