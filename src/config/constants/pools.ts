@@ -1,23 +1,35 @@
-import { PoolConfig } from './types'
+import tokens from './tokens'
+import { PoolCategory, PoolConfig } from './types'
 
 const pools: PoolConfig[] = [
-  // {
-  //   sousId: 0,
-  //   tokenName: 'BLZD',
-  //   stakingTokenName: QuoteToken.BLZD,
-  //   stakingTokenAddress: '0x57067A6BD75c0E95a6A5f158455926e43E79BeB0',
-  //   contractAddress: {
-  //     97: '',
-  //     56: '0x734AA7125017A2E712AE816ca9F81D5aF01192f2',
-  //   },
-  //   poolCategory: PoolCategory.CORE,
-  //   projectLink: 'https://blizzard.money/',
-  //   harvest: true,
-  //   tokenPerBlock: '10',
-  //   sortOrder: 1,
-  //   isFinished: false,
-  //   tokenDecimals: 18,
-  // },
+  {
+    sousId: 1,
+    stakingToken: tokens.blzd,
+    earningToken: tokens.bnb,
+    contractAddress: {
+      97: '',
+      56: '0x481055C4182B9A5e90d8E7EDe9f65b957dC0Ec22',
+    },
+    poolCategory: PoolCategory.CORE,
+    harvest: true,
+    tokenPerBlock: '0.002480',
+    sortOrder: 999,
+    isFinished: false,
+  },
+  {
+    sousId: 2,
+    stakingToken: tokens.blzd,
+    earningToken: tokens.bifi,
+    contractAddress: {
+      97: '',
+      56: '0x95b3389f41dbf513De5710A68220efF5a42dB068',
+    },
+    poolCategory: PoolCategory.CORE,
+    harvest: true,
+    tokenPerBlock: '0.00009920',
+    sortOrder: 999,
+    isFinished: false,
+  },
 ]
 
 export default pools

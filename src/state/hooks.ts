@@ -2,9 +2,11 @@ import BigNumber from 'bignumber.js'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
-import { fetchFarmsPublicDataAsync, fetchPoolsUserDataAsync, fetchPoolsPublicDataAsync } from './actions'
-import { State, Farm, Pool } from './types'
+import { getWeb3NoAccount } from 'utils/web3'
+import { fetchFarmsPublicDataAsync, fetchPoolsUserDataAsync, fetchPoolsPublicDataAsync, setBlock } from './actions'
+import { State, Farm, Pool, Block, PriceState } from './types'
 import { QuoteToken } from '../config/constants/types'
+import { fetchPrices } from './prices'
 
 const ZERO = new BigNumber(0)
 
@@ -15,6 +17,16 @@ export const useFetchPublicData = () => {
     dispatch(fetchFarmsPublicDataAsync())
     dispatch(fetchPoolsPublicDataAsync())
   }, [dispatch, slowRefresh])
+
+  useEffect(() => {
+    const web3 = getWeb3NoAccount()
+    const interval = setInterval(async () => {
+      const blockNumber = await web3.eth.getBlockNumber()
+      dispatch(setBlock(blockNumber))
+    }, 6000)
+
+    return () => clearInterval(interval)
+  }, [dispatch])
 }
 
 // Farms
@@ -99,4 +111,34 @@ export const useTotalValue = (): BigNumber => {
     }
   }
   return value
+}
+
+// Prices
+export const useFetchPriceList = () => {
+  const { slowRefresh } = useRefresh()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchPrices())
+  }, [dispatch, slowRefresh])
+}
+
+export const useGetApiPrices = () => {
+  const prices: PriceState['data'] = useSelector((state: State) => state.prices.data)
+  return prices
+}
+
+export const useGetApiPrice = (token: string) => {
+  const prices = useGetApiPrices()
+
+  if (!prices) {
+    return null
+  }
+
+  return prices[token.toLowerCase() === 'bnb' ? 'wbnb' : token.toLowerCase()]
+}
+
+// Block
+export const useBlock = (): Block => {
+  return useSelector((state: State) => state.block)
 }

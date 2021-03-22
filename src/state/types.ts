@@ -39,9 +39,32 @@ export interface PoolsState {
   data: Pool[]
 }
 
+// API Price State
+export interface PriceList {
+  [key: string]: number
+}
+
+export interface PriceApiResponse {
+  /* eslint-disable camelcase */
+  update_at: string
+  prices: PriceList
+}
+
+export interface PriceState {
+  isLoading: boolean
+  lastUpdated: string
+  data: PriceList
+}
+
 // Global state
 
 export interface State {
   farms: FarmsState
+  prices: PriceState
   pools: PoolsState
+  block: Block
+}
+
+export interface Block {
+  blockNumber: number
 }

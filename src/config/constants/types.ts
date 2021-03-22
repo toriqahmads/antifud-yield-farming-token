@@ -40,6 +40,13 @@ export interface Address {
   56: string
 }
 
+export interface Token {
+  symbol: string
+  address?: Address
+  decimals?: number
+  projectLink?: string
+}
+
 export interface FarmConfig {
   pid: number
   lpSymbol: string
@@ -60,19 +67,15 @@ export interface FarmConfig {
 
 export interface PoolConfig {
   sousId: number
-  image?: string
-  tokenName: string
-  stakingTokenName: QuoteToken
+  earningToken: Token
+  stakingToken: Token
   stakingLimit?: number
-  stakingTokenAddress?: string
   contractAddress: Address
   poolCategory: PoolCategory
-  projectLink: string
   tokenPerBlock: string
   sortOrder?: number
   harvest?: boolean
   isFinished?: boolean
-  tokenDecimals: number
 }
 
 export type Nft = {
