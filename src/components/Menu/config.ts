@@ -50,25 +50,16 @@ const config: MenuEntry[] = [
     ],
   },
   {
-    label: 'More',
-    icon: 'MoreIcon',
-    items: [
-      {
-        label: 'Github',
-        href: 'https://github.com/blzd-dev',
-        external: true,
-      },
-      {
-        label: 'Docs',
-        href: 'https://blizzardmoney.medium.com/',
-        external: true,
-      },
-      {
-        label: 'Blog',
-        href: 'https://blizzardmoney.medium.com',
-        external: true,
-      },
-    ],
+    label: 'Github',
+    icon: 'GithubIcon',
+    href: 'https://github.com/blzd-dev',
+    external: true,
+  },
+  {
+    label: 'Blog',
+    icon: 'MediumIcon',
+    href: 'https://blizzardmoney.medium.com',
+    external: true,
   },
 ]
 
