@@ -27,10 +27,10 @@ const BlzdStats = () => {
   const totalSupply = useTotalSupply()
   const burnedBalance = useBurnedBalance(getCakeAddress())
   const farms = useFarms();
-  const eggPrice = usePriceBlzdBusd();
+  const blzdPrice = usePriceBlzdBusd();
   const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0);
-  const cakeSupply = getBalanceNumber(circSupply);
-  const marketCap = eggPrice.times(circSupply);
+  const blzdSupply = getBalanceNumber(circSupply);
+  const marketCap = blzdPrice.times(circSupply);
 
   let blzdPerBlock = 0;
   if(farms && farms[0] && farms[0].blzdPerBlock){
@@ -45,7 +45,7 @@ const BlzdStats = () => {
         </Heading>
         <Row>
           <Text fontSize="14px">{TranslateString(536, 'Total BLZD Supply')}</Text>
-          {cakeSupply && <CardValue fontSize="14px" value={cakeSupply} decimals={0} />}
+          {blzdSupply && <CardValue fontSize="14px" value={blzdSupply} decimals={0} />}
         </Row>
         <Row>
           <Text fontSize="14px">{TranslateString(999, 'Market Cap')}</Text>
