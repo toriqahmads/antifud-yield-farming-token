@@ -156,6 +156,22 @@ const farms: FarmConfig[] = [
     quoteTokenSymbol: QuoteToken.BNB,
     quoteTokenAdresses: contracts.wbnb,
   },
+  {
+    pid: 10,
+    isTokenOnly: true,
+    lpSymbol: 'vBSWAP',
+    lpAddresses: {
+      97: '',
+      56: '0x8DD39f0a49160cDa5ef1E2a2fA7396EEc7DA8267', // vBSWAP-BNB LP
+    },
+    tokenSymbol: 'vBSWAP',
+    tokenAddresses: {
+      97: '',
+      56: '0x4f0ed527e8A95ecAA132Af214dFd41F30b361600',
+    },
+    quoteTokenSymbol: QuoteToken.BNB,
+    quoteTokenAdresses: contracts.wbnb,
+  },
 ]
 
 export default farms

@@ -4,6 +4,7 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { ResetCSS } from '@blzd-dev/uikit'
 import BigNumber from 'bignumber.js'
 import { useFetchPriceList, useFetchPublicData } from 'state/hooks'
+import useGetDocumentTitlePrice from './hooks/useGetDocumentTitlePrice'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
 import PageLoader from './components/PageLoader'
@@ -36,6 +37,7 @@ const App: React.FC = () => {
 
   useFetchPublicData()
   useFetchPriceList()
+  useGetDocumentTitlePrice()
 
   return (
     <Router>
