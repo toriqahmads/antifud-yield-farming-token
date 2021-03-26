@@ -123,7 +123,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
     maximumFractionDigits: 2,
   })
 
-  const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses } = farm
+  const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, isTokenOnly } = farm
 
   return (
     <FCard>
@@ -185,6 +185,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
           quoteTokenAdresses={quoteTokenAdresses}
           quoteTokenSymbol={quoteTokenSymbol}
           tokenAddresses={tokenAddresses}
+          isTokenOnly={isTokenOnly}
         />
       </ExpandingWrapper>
     </FCard>

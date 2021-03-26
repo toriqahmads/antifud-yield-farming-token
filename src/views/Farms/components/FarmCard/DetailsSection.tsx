@@ -13,6 +13,7 @@ export interface ExpandableSectionProps {
   quoteTokenAdresses?: Address
   quoteTokenSymbol?: string
   tokenAddresses: Address
+  isTokenOnly?: boolean
 }
 
 const Wrapper = styled.div`
@@ -42,17 +43,20 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
   quoteTokenAdresses,
   quoteTokenSymbol,
   tokenAddresses,
+  isTokenOnly,
 }) => {
   const TranslateString = useI18n()
   const liquidityUrlPathParts = getLiquidityUrlPathParts({ quoteTokenAdresses, quoteTokenSymbol, tokenAddresses })
+  const pancakeLink = isTokenOnly
+    ? `https://exchange.pancakeswap.finance/#/swap?outputCurrency=${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+    : `https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`
+  const link = lpLabel.includes('vBSWAP') ? 'https://bsc.valuedefi.io/#/vswap' : pancakeLink
 
   return (
     <Wrapper>
       <Flex justifyContent="space-between">
         <Text>{TranslateString(316, 'Stake')}:</Text>
-        <StyledLinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
-          {lpLabel}
-        </StyledLinkExternal>
+        <StyledLinkExternal href={link}>{lpLabel}</StyledLinkExternal>
       </Flex>
       {!removed && (
         <Flex justifyContent="space-between">
