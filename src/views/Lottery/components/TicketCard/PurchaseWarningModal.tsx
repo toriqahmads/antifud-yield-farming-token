@@ -22,9 +22,7 @@ const WarningModal: React.FC<{ onDismiss?: () => void }> = ({ onDismiss }) => {
         )}
       </TicketsList>
       <ModalActions>
-        <Button onClick={onDismiss}>
-          {TranslateString(476, 'I understand')}
-        </Button>
+        <Button onClick={onDismiss}>{TranslateString(476, 'I understand')}</Button>
       </ModalActions>
     </Modal>
   )

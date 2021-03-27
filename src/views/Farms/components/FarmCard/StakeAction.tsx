@@ -24,7 +24,7 @@ const IconButtonWrapper = styled.div`
   }
 `
 
-const StakeAction: React.FC<FarmCardActionsProps> = ({ stakedBalance, tokenBalance, tokenName, pid, depositFeeBP}) => {
+const StakeAction: React.FC<FarmCardActionsProps> = ({ stakedBalance, tokenBalance, tokenName, pid, depositFeeBP }) => {
   const TranslateString = useI18n()
   const { onStake } = useStake(pid)
   const { onUnstake } = useUnstake(pid)
@@ -32,17 +32,21 @@ const StakeAction: React.FC<FarmCardActionsProps> = ({ stakedBalance, tokenBalan
   const rawStakedBalance = getBalanceNumber(stakedBalance)
   const displayBalance = rawStakedBalance.toLocaleString()
 
-  const [onPresentDeposit] = useModal(<DepositModal max={tokenBalance} onConfirm={onStake} tokenName={tokenName} depositFeeBP={depositFeeBP} />)
+  const [onPresentDeposit] = useModal(
+    <DepositModal max={tokenBalance} onConfirm={onStake} tokenName={tokenName} depositFeeBP={depositFeeBP} />,
+  )
   const [onPresentWithdraw] = useModal(
     <WithdrawModal max={stakedBalance} onConfirm={onUnstake} tokenName={tokenName} />,
   )
 
   const renderStakingButtons = () => {
     return rawStakedBalance === 0 ? (
-      <Button style={{ width: 107.72 }} onClick={onPresentDeposit}>{TranslateString(999, 'Stake')}</Button>
+      <Button style={{ width: 107.72 }} onClick={onPresentDeposit}>
+        {TranslateString(999, 'Stake')}
+      </Button>
     ) : (
       <IconButtonWrapper>
-        <IconButton style={{ width: 52 }}  variant="tertiary" onClick={onPresentWithdraw} mr="6px">
+        <IconButton style={{ width: 52 }} variant="tertiary" onClick={onPresentWithdraw} mr="6px">
           <MinusIcon color="primary" />
         </IconButton>
         <IconButton style={{ width: 52 }} variant="tertiary" onClick={onPresentDeposit}>

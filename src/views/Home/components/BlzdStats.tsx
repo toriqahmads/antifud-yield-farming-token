@@ -26,15 +26,15 @@ const BlzdStats = () => {
   const TranslateString = useI18n()
   const totalSupply = useTotalSupply()
   const burnedBalance = useBurnedBalance(getCakeAddress())
-  const farms = useFarms();
-  const blzdPrice = usePriceBlzdBusd();
-  const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0);
-  const blzdSupply = getBalanceNumber(circSupply);
-  const marketCap = blzdPrice.times(circSupply);
+  const farms = useFarms()
+  const blzdPrice = usePriceBlzdBusd()
+  const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0)
+  const blzdSupply = getBalanceNumber(circSupply)
+  const marketCap = blzdPrice.times(circSupply)
 
-  let blzdPerBlock = 0;
-  if(farms && farms[0] && farms[0].blzdPerBlock){
-    blzdPerBlock = new BigNumber(farms[0].blzdPerBlock).div(new BigNumber(10).pow(18)).toNumber();
+  let blzdPerBlock = 0
+  if (farms && farms[0] && farms[0].blzdPerBlock) {
+    blzdPerBlock = new BigNumber(farms[0].blzdPerBlock).div(new BigNumber(10).pow(18)).toNumber()
   }
 
   return (
@@ -57,7 +57,9 @@ const BlzdStats = () => {
         </Row>
         <Row>
           <Text fontSize="14px">{TranslateString(540, 'New BLZD/block')}</Text>
-          <Text bold fontSize="14px">{blzdPerBlock}</Text>
+          <Text bold fontSize="14px">
+            {blzdPerBlock}
+          </Text>
         </Row>
       </CardBody>
     </StyledBlzdStats>

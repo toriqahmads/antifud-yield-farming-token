@@ -17,8 +17,7 @@ const config: MenuEntry[] = [
       },
       {
         label: 'Liquidity',
-        href:
-          'https://exchange.pancakeswap.finance/#/add/BNB/0x57067A6BD75c0E95a6A5f158455926e43E79BeB0',
+        href: 'https://exchange.pancakeswap.finance/#/add/BNB/0x57067A6BD75c0E95a6A5f158455926e43E79BeB0',
         external: true,
       },
     ],

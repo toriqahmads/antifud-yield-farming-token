@@ -54,9 +54,7 @@ const TicketCard: React.FC = () => {
     if (!allowance.toNumber()) {
       return (
         <>
-          <Button disabled>
-            {TranslateString(432, 'View your tickets')}
-          </Button>
+          <Button disabled>{TranslateString(432, 'View your tickets')}</Button>
           <Button disabled={requestedApproval} onClick={handleApprove}>
             {TranslateString(999, 'Approve CAKE')}
           </Button>
