@@ -75,7 +75,7 @@ const FarmedStakingCard = () => {
               address: '0x57067A6BD75c0E95a6A5f158455926e43E79BeB0',
               symbol: 'BLZD',
               decimals: '18',
-              image: 'https://blzd-frontend.vercel.app/images/farms/blzd.png',
+              image: 'https://blizzard.money/images/farms/blzd.png',
             },
           },
         })
