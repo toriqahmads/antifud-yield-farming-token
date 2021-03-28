@@ -60,6 +60,12 @@ const config: MenuEntry[] = [
     href: 'https://blizzardmoney.medium.com',
     external: true,
   },
+  {
+    label: 'Audit',
+    icon: 'AuditIcon',
+    external: true,
+    href: '/files/gemzAudit.pdf',
+  },
 ]
 
 export default config
