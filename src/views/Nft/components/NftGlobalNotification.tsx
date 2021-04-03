@@ -49,36 +49,41 @@ const NftGlobalNotification = () => {
   const { account } = useWallet()
   const [onPresentBurnModal] = useModal(<NftYouWonModal />)
   const showModal = useRef(() => onPresentBurnModal())
+  try {
+    useEffect(() => {
+      const checkNftStatus = async () => {
+        const [totalSupplyDistributedArr, currentDistributedSupplyArr, canClaimArr, hasClaimedArr] = await multicall(
+          rabbitmintingfarm,
+          [
+            { address: RABBIT_MINTING_FARM_ADDRESS, name: 'totalSupplyDistributed' },
+            { address: RABBIT_MINTING_FARM_ADDRESS, name: 'currentDistributedSupply' },
+            { address: RABBIT_MINTING_FARM_ADDRESS, name: 'canClaim', params: [account] },
+            { address: RABBIT_MINTING_FARM_ADDRESS, name: 'hasClaimed', params: [account] },
+          ],
+        )
 
-  useEffect(() => {
-    const checkNftStatus = async () => {
-      const [totalSupplyDistributedArr, currentDistributedSupplyArr, canClaimArr, hasClaimedArr] = await multicall(
-        rabbitmintingfarm,
-        [
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'totalSupplyDistributed' },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'currentDistributedSupply' },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'canClaim', params: [account] },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'hasClaimed', params: [account] },
-        ],
-      )
+        // TODO: Figure out why these values are coming back as an array
+        const [totalSupplyDistributed]: [BigNumber] = totalSupplyDistributedArr
+        const [currentDistributedSupply]: [BigNumber] = currentDistributedSupplyArr
+        const [canClaim]: [boolean] = canClaimArr
+        const [hasClaimed]: [boolean] = hasClaimedArr
 
-      // TODO: Figure out why these values are coming back as an array
-      const [totalSupplyDistributed]: [BigNumber] = totalSupplyDistributedArr
-      const [currentDistributedSupply]: [BigNumber] = currentDistributedSupplyArr
-      const [canClaim]: [boolean] = canClaimArr
-      const [hasClaimed]: [boolean] = hasClaimedArr
-
-      if (currentDistributedSupply.lt(totalSupplyDistributed) && canClaim && !hasClaimed) {
-        showModal.current()
+        if (currentDistributedSupply.lt(totalSupplyDistributed) && canClaim && !hasClaimed) {
+          showModal.current()
+        }
       }
-    }
 
-    if (account && !document.location.href.includes('/nft')) {
-      checkNftStatus()
-    }
-  }, [account, showModal])
+      if (account && !document.location.href.includes('/nft')) {
+        checkNftStatus()
+      }
+    }, [account, showModal])
 
-  return <div />
+    return <div />
+  }
+  catch (err) {
+    console.log("err nft global", err)
+    return err;
+  }
 }
 
 export default NftGlobalNotification

@@ -7,9 +7,9 @@ import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
 import useI18n from 'hooks/useI18n'
 import { getCakeAddress } from 'utils/addressHelpers'
 import CardValue from './CardValue'
-import { useFarms, usePriceBlzdBusd } from '../../../state/hooks'
+import { useFarms, usePriceFudBusd } from '../../../state/hooks'
 
-const StyledBlzdStats = styled(Card)`
+const StyledFudStats = styled(Card)`
   margin-left: auto;
   margin-right: auto;
 `
@@ -22,48 +22,48 @@ const Row = styled.div`
   margin-bottom: 8px;
 `
 
-const BlzdStats = () => {
+const FudStats = () => {
   const TranslateString = useI18n()
   const totalSupply = useTotalSupply()
   const burnedBalance = useBurnedBalance(getCakeAddress())
   const farms = useFarms()
-  const blzdPrice = usePriceBlzdBusd()
+  const fudPrice = usePriceFudBusd()
   const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0)
-  const blzdSupply = getBalanceNumber(circSupply)
-  const marketCap = blzdPrice.times(circSupply)
+  const fudSupply = getBalanceNumber(circSupply)
+  const marketCap = fudPrice.times(circSupply)
 
-  let blzdPerBlock = 0
-  if (farms && farms[0] && farms[0].blzdPerBlock) {
-    blzdPerBlock = new BigNumber(farms[0].blzdPerBlock).div(new BigNumber(10).pow(18)).toNumber()
+  let fudPerBlock = 0
+  if (farms && farms[0] && farms[0].fudPerBlock) {
+    fudPerBlock = new BigNumber(farms[0].fudPerBlock).div(new BigNumber(10).pow(18)).toNumber()
   }
 
   return (
-    <StyledBlzdStats>
+    <StyledFudStats>
       <CardBody>
         <Heading size="xl" mb="24px">
-          {TranslateString(534, 'BLZD Stats')}
+          {TranslateString(534, 'FUD Stats')}
         </Heading>
         <Row>
-          <Text fontSize="14px">{TranslateString(536, 'Total BLZD Supply')}</Text>
-          {blzdSupply && <CardValue fontSize="14px" value={blzdSupply} decimals={0} />}
+          <Text fontSize="14px">{TranslateString(536, 'Total FUD Supply')}</Text>
+          {fudSupply && <CardValue fontSize="14px" value={fudSupply} decimals={0} />}
         </Row>
         <Row>
           <Text fontSize="14px">{TranslateString(999, 'Market Cap')}</Text>
           <CardValue fontSize="14px" value={getBalanceNumber(marketCap)} decimals={0} prefix="$" />
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(538, 'Total BLZD Burned')}</Text>
+          <Text fontSize="14px">{TranslateString(538, 'Total FUD Burned')}</Text>
           <CardValue fontSize="14px" value={getBalanceNumber(burnedBalance)} decimals={0} />
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(540, 'New BLZD/block')}</Text>
+          <Text fontSize="14px">{TranslateString(540, 'New FUD/block')}</Text>
           <Text bold fontSize="14px">
-            {blzdPerBlock}
+            {fudPerBlock}
           </Text>
         </Row>
       </CardBody>
-    </StyledBlzdStats>
+    </StyledFudStats>
   )
 }
 
-export default BlzdStats
+export default FudStats

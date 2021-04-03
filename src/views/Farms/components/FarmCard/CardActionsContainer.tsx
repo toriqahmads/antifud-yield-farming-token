@@ -69,13 +69,16 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
       </Button>
     )
   }
-
+  const a = useFarmUser(pid)
+  if (pid === 0) {
+    console.log("v", a)
+  }
   return (
     <Action>
       <Flex>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="3px">
           {/* TODO: Is there a way to get a dynamic value here from useFarmFromSymbol? */}
-          BLZD
+          FUD
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {TranslateString(999, 'Earned')}

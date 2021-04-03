@@ -31,16 +31,16 @@ const Farm: React.FC = () => {
       <Hero>
         <div>
           <Heading as="h1" size="xxl" mb="16px">
-            {TranslateString(282, 'BLZD Pool')}
+            {TranslateString(282, 'FUD Pool')}
           </Heading>
           <ul>
-            <li>{TranslateString(580, 'Stake BLZD to earn tokens.')}</li>
+            <li>{TranslateString(580, 'Stake FUD to earn tokens.')}</li>
             <li>{TranslateString(404, 'You can unstake at any time.')}</li>
             <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
           </ul>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <img src="/images/blzdstakepage.png" alt="BLZD Pool icon" />
+          <img src="/images/blzdstakepage.png" alt="FUD Pool icon" />
         </div>
       </Hero>
       <PoolTabButtons />

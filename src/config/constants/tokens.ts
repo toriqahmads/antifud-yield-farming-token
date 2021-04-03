@@ -3,14 +3,14 @@ const tokens = {
     symbol: 'BNB',
     projectLink: 'https://www.binance.com/',
   },
-  blzd: {
-    symbol: 'BLZD',
+  fud: {
+    symbol: 'FUD',
     address: {
-      56: '0x57067A6BD75c0E95a6A5f158455926e43E79BeB0',
-      97: '0x1977ECbdE6832920c3554E238deDFfBC5ed996c9',
+      56: '',
+      97: '0x40eA269D037734523f701Da9084c8c65672137fb',
     },
     decimals: 18,
-    projectLink: 'https://blizzard.money/',
+    projectLink: 'https://antifud.money/',
   },
   cake: {
     symbol: 'CAKE',

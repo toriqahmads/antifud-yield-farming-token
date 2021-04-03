@@ -6,8 +6,8 @@ import useI18n from 'hooks/useI18n'
 import { useAllHarvest } from 'hooks/useHarvest'
 import useFarmsWithBalance from 'hooks/useFarmsWithBalance'
 import UnlockButton from 'components/UnlockButton'
-import BlzdHarvestBalance from './BlzdHarvestBalance'
-import BlzdWalletBalance from './BlzdWalletBalance'
+import FudHarvestBalance from './FudHarvestBalance'
+import FudWalletBalance from './FudWalletBalance'
 
 const StyledFarmStakingCard = styled(Card)`
   background-image: url('/images/blzd/2a.png');
@@ -60,7 +60,7 @@ const FarmedStakingCard = () => {
     }
   }, [onReward])
 
-  const addWatchBlzdToken = useCallback(async () => {
+  const addWatchFudToken = useCallback(async () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const provider = window.ethereum
@@ -72,8 +72,8 @@ const FarmedStakingCard = () => {
           params: {
             type: 'ERC20',
             options: {
-              address: '0x57067A6BD75c0E95a6A5f158455926e43E79BeB0',
-              symbol: 'BLZD',
+              address: '0x40ea269d037734523f701da9084c8c65672137fb',
+              symbol: 'FUD',
               decimals: '18',
               image: 'https://blizzard.money/images/farms/blzd.png',
             },
@@ -97,23 +97,23 @@ const FarmedStakingCard = () => {
         </Heading>
         <TokenImageWrapper>
           <CardImage src="/images/blzd/2.png" alt="blzd logo" width={64} height={64} />
-          <Button onClick={addWatchBlzdToken} scale="sm">
+          <Button onClick={addWatchFudToken} scale="sm">
             + <img style={{ marginLeft: 8 }} width={16} src="/images/wallet/metamask.png" alt="metamask logo" />
           </Button>
         </TokenImageWrapper>
         <Block>
-          <BlzdHarvestBalance />
-          <Label>{TranslateString(544, 'BLZD to Harvest')}</Label>
+          <FudHarvestBalance />
+          <Label>{TranslateString(544, 'FUD to Harvest')}</Label>
         </Block>
         <Block>
-          <BlzdWalletBalance />
-          <Label>{TranslateString(546, 'BLZD in Wallet')}</Label>
+          <FudWalletBalance />
+          <Label>{TranslateString(546, 'FUD in Wallet')}</Label>
         </Block>
         <Actions>
           {account ? (
             <Button id="harvest-all" disabled={balancesWithValue.length <= 0 || pendingTx} onClick={harvestAllFarms}>
               {pendingTx
-                ? TranslateString(548, 'Collecting BLZD')
+                ? TranslateString(548, 'Collecting FUD')
                 : TranslateString(999, `Harvest all (${balancesWithValue.length})`)}
             </Button>
           ) : (

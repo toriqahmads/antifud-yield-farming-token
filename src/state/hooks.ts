@@ -80,13 +80,13 @@ export const usePoolFromPid = (sousId): Pool => {
 // Prices
 
 export const usePriceBnbBusd = (): BigNumber => {
-  const pid = 3 // BNB-BUSD LP
+  const pid = 2 // BNB-BUSD LP
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO
 }
 
-export const usePriceBlzdBusd = (): BigNumber => {
-  const pid = 1 // BLZD-BUSD LP
+export const usePriceFudBusd = (): BigNumber => {
+  const pid = 0 // FUD-BUSD LP
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO
 }
@@ -94,7 +94,7 @@ export const usePriceBlzdBusd = (): BigNumber => {
 export const useTotalValue = (): BigNumber => {
   const farms = useFarms()
   const bnbPrice = usePriceBnbBusd()
-  const blzdPrice = usePriceBlzdBusd()
+  const fudPrice = usePriceFudBusd()
   let value = new BigNumber(0)
   for (let i = 0; i < farms.length; i++) {
     const farm = farms[i]
@@ -102,8 +102,8 @@ export const useTotalValue = (): BigNumber => {
       let val
       if (farm.quoteTokenSymbol === QuoteToken.BNB) {
         val = bnbPrice.times(farm.lpTotalInQuoteToken)
-      } else if (farm.quoteTokenSymbol === QuoteToken.BLZD) {
-        val = blzdPrice.times(farm.lpTotalInQuoteToken)
+      } else if (farm.quoteTokenSymbol === QuoteToken.FUD) {
+        val = fudPrice.times(farm.lpTotalInQuoteToken)
       } else {
         val = farm.lpTotalInQuoteToken
       }
@@ -130,12 +130,16 @@ export const useGetApiPrices = () => {
 
 export const useGetApiPrice = (token: string) => {
   const prices = useGetApiPrices()
+  let tokenSymbol = token.toLowerCase()
 
   if (!prices) {
     return null
   }
 
-  return prices[token.toLowerCase() === 'bnb' ? 'wbnb' : token.toLowerCase()]
+  if (tokenSymbol === 'bnb') tokenSymbol = 'wbnb'
+  if (tokenSymbol === 'btc') tokenSymbol = 'btcb'
+
+  return prices[tokenSymbol]
 }
 
 // Block
